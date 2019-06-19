@@ -54,7 +54,7 @@
             if (readCharacteristic == null) {
                 navigator.bluetooth.requestDevice({
                             filters: [{
-                                services: [UART_SERVICE_UUID]
+                                services: [UART_SERVICE_UUID]  //debería haber características tambien??
                             }]
                         })
                         .then(function (device) {
@@ -109,6 +109,7 @@
     // These magic hex numbers below conform to the Firmata standard, in a real app you would use
     // a JavaScript Firmata libraries to hide these details.
     // An example of which will be published on www.thebubbleworks.com
+	//comprobar esto!!!!!
 
     var FIRMATA_PIN13_DIGITAL_OUT_MESSAGE = [0xf4, 0x0d, 0x01];
     var FIRMATA_PIN13_DIGITAL_LOW_MESSAGE = [0x91, 0x00, 0x00];
