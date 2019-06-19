@@ -64,17 +64,14 @@
                     log('> Found GATT server');
                     gattServer = server;
                     // Get UART service
-                    gattServer.getPrimaryService(UART_SERVICE_UUID);
                 }).then(function (service) {
                     log('> Found event service');
                     uartService = service;
                     // Get write characteristic
-                    return uartService.getCharacteristic(UART_CHAR_TX_UUID);
                 }).then(function (characteristic) {
                     log('> Found write characteristic');
                     writeCharacteristic = characteristic;
                     // Get read characteristic
-                    return uartService.getCharacteristic(UART_CHAR_RX_UUID);
                 }).then(function (characteristic) {
                     connected = true;
                     log('> Found read characteristic');
