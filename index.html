@@ -89,7 +89,6 @@
     }
     function send(data) {
         log("Sending: " + data);
-        return writeCharacteristic.writeValue(new Uint8Array(data));
     }
     // These magic hex numbers below conform to the Firmata standard, in a real app you would use
     // a JavaScript Firmata libraries to hide these details.
