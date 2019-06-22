@@ -69,9 +69,7 @@
     var FIRMATA_PIN13_DIGITAL_LOW_MESSAGE = [0x91, 0x00, 0x00];
     var FIRMATA_PIN13_DIGITAL_HIGH_MESSAGE = [0x91, 0x20, 0x00];
     function deviceReady() {
-        send(FIRMATA_PIN13_DIGITAL_OUT_MESSAGE)
-    })
-        ;
+        send(FIRMATA_PIN13_DIGITAL_OUT_MESSAGE);
     }
     function ledOnPressed() {
         send(FIRMATA_PIN13_DIGITAL_HIGH_MESSAGE);
