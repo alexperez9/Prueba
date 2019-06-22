@@ -46,7 +46,7 @@
                     readCharacteristic = characteristic;
                     deviceReady();
                     // Listen to device notifications
-                    return readCharacteristic.startNotifications().then(function () {
+                    }).then(function () {
                         readCharacteristic.addEventListener('characteristicvaluechanged', function (event) {
                             log('> characteristicvaluechanged = ' + event.target.value + ' [' + event.target.value.byteLength + ']');
                             if (event.target.value.byteLength > 0) {
