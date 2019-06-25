@@ -35,8 +35,8 @@
                             return device.connectGATT(); // This is deprectated, but still necessary in some 'older' browser versions.
                         }).then(function server {
                     log('> Found GATT server');
-                    gattServer = server;
                     // Get UART service
+                    gattServer=server;
                     return gattServer.getPrimaryService(UART_SERVICE_UUID);
                 }).then(function service {
                     log('> Found event service');
