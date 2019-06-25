@@ -29,10 +29,11 @@
                                 services: [UART_SERVICE_UUID]
                             }]
                         })
-                        .then(function device () {
+                        .then(function (device) {
                             log('> DeviceNAme=' + device.name);
                             log('Connecting to GATT Server...');
-                            return device.connectGATT(); // This is deprectated, but still necessary in some 'older' browser versions.
+                            deviced=device;
+                            return deviced.connectGATT(); // This is deprectated, but still necessary in some 'older' browser versions.
                         }).then(function server  {
                     log('> Found GATT server');
                     // Get UART service
