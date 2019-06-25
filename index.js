@@ -32,7 +32,7 @@
                         .then(function (device) {
                             log('> DeviceNAme=' + device.name);
                             log('Connecting to GATT Server...');
-                            return device.connectGATT(); // This is deprectated, but still necessary in some 'older' browser versions.
+                            device.connectGATT(); // This is deprectated, but still necessary in some 'older' browser versions.
                         }).then(function (server) {
                     log('> Found GATT server');
                     gattServer = server;
