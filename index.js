@@ -32,25 +32,23 @@
                         .then(function (device) {
                             log('> DeviceNAme=' + device.name);
                             log('Connecting to GATT Server...');
-                            return device(); // This is deprectated, but still necessary in some 'older' browser versions.
-                        }).then(function server  {
+                            return device.connectGATT(); // This is deprectated, but still necessary in some 'older' browser versions.
+                        }).then(function (server) {
                     log('> Found GATT server');
+                    gattServer = server;
                     // Get UART service
-                    gattServer=server;
                     return gattServer.getPrimaryService(UART_SERVICE_UUID);
                 }).then(function (service) {
                     log('> Found event service');
-                    if (!service)
-                    throw "service not found";
                     uartService = service;
                     // Get write characteristic
                     return uartService.getCharacteristic(UART_CHAR_TX_UUID);
-                }).then(function characteristic {
+                }).then(function (characteristic) {
                     log('> Found write characteristic');
                     writeCharacteristic = characteristic;
                     // Get read characteristic
                     return uartService.getCharacteristic(UART_CHAR_RX_UUID);
-                }).then(function characteristic {
+                }).then(function (characteristic) {
                     connected = true;
                     log('> Found read characteristic');
                     readCharacteristic = characteristic;
@@ -105,7 +103,7 @@
     }
 
 
-    function log(line) {
+        function log(line) {
         console.log(line);
         previous_text = document.getElementById('consoleTextArea').innerHTML;
         document.getElementById('consoleTextArea').innerHTML = previous_text + line + "\n";
