@@ -32,11 +32,11 @@
                         .then(function (device) {
                             log('> DeviceNAme=' + device.name);
                             log('Connecting to GATT Server...');
-                            return true; // This is deprectated, but still necessary in some 'older' browser versions.
+                            return device.name; // This is deprectated, but still necessary in some 'older' browser versions.
                         }).then(function (server) {
                     log('> Found GATT server');
                     // Get UART service
-                    return (UART_SERVICE_UUID);
+                   return server.getPrimaryService(UART_SERVICE_UUID);
                 }).then(function (service) {
                     log('> Found event service');
                     uartService = service;
