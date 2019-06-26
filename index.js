@@ -35,10 +35,8 @@
                             return true; // This is deprectated, but still necessary in some 'older' browser versions.
                         }).then(function (server) {
                     log('> Found GATT server');
-                    gattServer = server;
                     // Get UART service
-                   log(gattServer);
-                    return getPrimaryService(UART_SERVICE_UUID);
+                    return server.getPrimaryService(UART_SERVICE_UUID);
                 }).then(function (service) {
                     log('> Found event service');
                     uartService = service;
