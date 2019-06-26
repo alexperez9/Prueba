@@ -36,17 +36,17 @@
                         }).then(function (server) {
                     log('> Found GATT server');
                     // Get UART service
-                    return server(UART_SERVICE_UUID);
+                    return (UART_SERVICE_UUID);
                 }).then(function (service) {
                     log('> Found event service');
                     uartService = service;
                     // Get write characteristic
-                    return uartService.getCharacteristic(UART_CHAR_TX_UUID);
+                    return (UART_CHAR_TX_UUID);
                 }).then(function (characteristic) {
                     log('> Found write characteristic');
                     writeCharacteristic = characteristic;
                     // Get read characteristic
-                    return uartService.getCharacteristic(UART_CHAR_RX_UUID);
+                    return (UART_CHAR_RX_UUID);
                 }).then(function (characteristic) {
                     connected = true;
                     log('> Found read characteristic');
@@ -56,7 +56,7 @@
                     deviceReady();
 
                     // Listen to device notifications
-                    return readCharacteristic.startNotifications().then(function () {
+                    return readCharacteristic.startNotifications();}).then(function () {
 
                         readCharacteristic.addEventListener('characteristicvaluechanged', function (event) {
                             log('> characteristicvaluechanged = ' + event.target.value + ' [' + event.target.value.byteLength + ']');
