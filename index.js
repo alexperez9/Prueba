@@ -32,21 +32,21 @@
                         .then(function (device) {
                             log('> DeviceNAme=' + device.name);
                             log('Connecting to GATT Server...');
-                            return device.name; // This is deprectated, but still necessary in some 'older' browser versions.
+                            return true; // This is deprectated, but still necessary in some 'older' browser versions.
                         }).then(function (server) {
                     log('> Found GATT server');
                     // Get UART service
-                   return server.getPrimaryService(UART_SERVICE_UUID);
+                   server.getPrimaryService(UART_SERVICE_UUID);
                 }).then(function (service) {
                     log('> Found event service');
                     uartService = service;
                     // Get write characteristic
-                    return (UART_CHAR_TX_UUID);
+                    uartService.getCharacteristic(UART_CHAR_TX_UUID);
                 }).then(function (characteristic) {
                     log('> Found write characteristic');
                     writeCharacteristic = characteristic;
                     // Get read characteristic
-                    return (UART_CHAR_RX_UUID);
+                   uartService.getCharacteristic(UART_CHAR_RX_UUID);
                 }).then(function (characteristic) {
                     connected = true;
                     log('> Found read characteristic');
