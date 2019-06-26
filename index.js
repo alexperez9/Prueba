@@ -36,7 +36,7 @@
                         }).then(function (server) {
                     log('> Found GATT server');
                     // Get UART service
-                    return server.getPrimaryService(UART_SERVICE_UUID);
+                    return server(UART_SERVICE_UUID);
                 }).then(function (service) {
                     log('> Found event service');
                     uartService = service;
