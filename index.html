@@ -70,18 +70,21 @@
 			   writeCharacteristic = service;
 			    return service.getCharacteristic(UART_CHAR_TX_UUID);
  						
-                  }).then( characteristic => {
+                  }).then( service => {
                      log('> Found write characteristic');
-                     readCharacteristic = characteristic;
+                     readCharacteristic = service;
                      // Get read characteristic
-                    return characteristic.getCharacteristic(UART_CHAR_RX_UUID);
+                    return service.getCharacteristic(UART_CHAR_RX_UUID);
+			
                 }).then( characteristic => {
                     connected = true;
                     log('> Found read characteristic');
-                    readCharacteristic = characteristic;
+                    //readCharacteristic = service;
 
 
                     deviceReady();
+			
+			(log('> Device Ready');
 
                     // Listen to device notifications
                     return readCharacteristic.startNotifications().then(function () {
