@@ -59,7 +59,6 @@
                         })
 		    .then(device => {
     
-                        .then( device) {
                             log('> DeviceNAme=' + device.name);
                             log('Connecting to GATT Server...');
                             return device.gatt.connect(); // This is deprectated, but still necessary in some 'older' browser versions.
