@@ -79,7 +79,7 @@
                 }).then( characteristic => {
                     connected = true;
                     log('> Found read characteristic');
-                    //readCharacteristic = service;
+                    readCharacteristic = characteristic;
 
 
                     deviceReady();
