@@ -75,15 +75,16 @@
 			// Get read characteristic
 			    return service.getCharacteristic(UART_CHAR_RX_UUID);
  						
-                	}).then(function (characteristic) {
+                	}).then(characteristic => {
                   	  connected = true;
-                       	log('> Found read characteristic');
+                       	  log('> Found read characteristic');
                   	  readCharacteristic = characteristic;
 
 
 
                     // Listen to device notifications
-                    return character.startNotifications().then(function () {
+                    return characteristic.startNotifications()
+			   }).then(function () {
 
                         readCharacteristic.addEventListener('characteristicvaluechanged', function (event) {
                             log('> characteristicvaluechanged = ' + event.target.value + ' [' + event.target.value.byteLength + ']');
